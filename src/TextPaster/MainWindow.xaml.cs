@@ -12,10 +12,29 @@ namespace TextPaster
     public partial class MainWindow : Window
     {
         IntPtr windowHandle;
+        GlobalKeyboardHook hook;
 
         public MainWindow()
         {
             InitializeComponent();
+            hook = new GlobalKeyboardHook();
+
+            string[] text = new string[]
+            {
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+            };
+            //AutoTyper auto = new AutoTyper(text);
             //this.ShowMinimizeAndMaximizeButtons();
             // this.HideMinimizeAndMaximizeButtons();
             this.SourceInitialized += MainWindow_SourceInitialized;
