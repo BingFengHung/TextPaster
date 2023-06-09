@@ -93,6 +93,44 @@ namespace TextPaster
             return result == 0;
         }
 
+        public bool SelectSingle(string key, out KeyboardMap model)
+        {
+            model = new KeyboardMap();
+
+            try
+            {
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    var command = connection.CreateCommand();
+
+                    command.CommandText = $@"SELECT * FROM keyboard WHERE `key` = '{key}'";
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            model = new KeyboardMap
+                            {
+                                Id = reader.GetInt32(0),
+                                Key = reader.GetString(1),
+                                Text = reader.GetString(2)
+                            };
+                            break;
+                        }
+                    }
+                }
+
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public bool Select(out List<KeyboardMap> models)
         {
             models = new List<KeyboardMap>();

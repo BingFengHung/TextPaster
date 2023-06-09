@@ -132,12 +132,18 @@ namespace TextPaster
                         case Keys.D1:
                         case Keys.D2:
                         case Keys.D3:
+                        case Keys.D4:
+                        case Keys.D5:
+                        case Keys.D6:
+                        case Keys.D7:
+                        case Keys.D8:
+                        case Keys.D9:
                             // if (_ctrlPressed && _shiftPressed)
                             if (_ctrlPressed)
                             {
                                 _tmpIntercept = true;
                                 _replaceText = true;
-                                TypeWork();
+                                TypeWork(vkCode - 0x30);
                             }
                             break;
 
@@ -153,16 +159,20 @@ namespace TextPaster
             return CallNextHookEx(hookId, nCode, wParam, lParam);
         }
 
-
-        private void TypeWork()
+        Sql sql = new Sql();
+        private void TypeWork(int value)
         {
             object lockObj = new object();
+            sql.SelectSingle(value.ToString(), out KeyboardMap model);
+
+            string text = model.Text;
+
+            if (string.IsNullOrEmpty(text)) return;
 
             Task.Factory.StartNew(() =>
             {
                 if (_replaceText)
                 {
-                    string text = "12345678910";
                     string firstKey = FormatText(text[0]);
                     _tmpIntercept = false;
                     System.Threading.SpinWait.SpinUntil(() => false, 200);
