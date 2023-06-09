@@ -16,7 +16,9 @@ namespace TextPaster
 
         public MainWindow()
         {
+            Sql sql = new Sql();
             InitializeComponent();
+            this.DataContext = new MainWindowViewModel();
             hook = new GlobalKeyboardHook();
 
             string[] text = new string[]

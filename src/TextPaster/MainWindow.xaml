@@ -6,8 +6,31 @@
         xmlns:local="clr-namespace:TextPaster"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="250" Width="300">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
 
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top"
+                  ItemsSource="{Binding Keys}"
+                  SelectedItem="{Binding SelectedKey}"
+                  DisplayMemberPath="Name"
+                  />
+
+        <Grid Grid.Column="1">
+            <TextBox Text="{Binding Content}" 
+                     TextWrapping="Wrap" 
+                     AcceptsReturn="True"/>
+            <Button Content="Save" 
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Command="{Binding SaveCommand}"/>
+        </Grid>
     </Grid>
 </Window>
