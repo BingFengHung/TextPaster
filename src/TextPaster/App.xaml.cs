@@ -20,7 +20,7 @@ namespace TextPaster
         {
             base.OnStartup(e);
 
-            MainWindow = new Window();
+            MainWindow = new MainWindow();
 
             notifyIcon.Icon = new System.Drawing.Icon(@".\icon.ico");
             notifyIcon.Text = "Text Paster";
