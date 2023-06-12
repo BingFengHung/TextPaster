@@ -14,7 +14,7 @@ namespace TextPaster
 
     class Sql
     {
-        private string connectionString = "Data Source=Keybaord.db";
+        private string connectionString = "Data Source=Keyboard.db";
 
         public Sql()
         {

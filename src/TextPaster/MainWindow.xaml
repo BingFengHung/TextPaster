@@ -10,6 +10,15 @@
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="{x:Type ComboBox}">
+
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+
+        </Style>
+    </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
