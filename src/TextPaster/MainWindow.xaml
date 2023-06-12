@@ -22,15 +22,21 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top"
+        <StackPanel Orientation="Horizontal"
+                    Margin="5, 0">
+            <TextBlock Text="Key: "/>
+
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top"
+                  Width="50"
                   ItemsSource="{Binding Keys}"
                   SelectedItem="{Binding SelectedKey}"
                   DisplayMemberPath="Name"
                   />
+        </StackPanel>
 
         <Grid Grid.Column="1">
             <TextBox Text="{Binding Content}" 

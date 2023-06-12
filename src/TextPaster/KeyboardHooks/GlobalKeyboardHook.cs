@@ -49,7 +49,6 @@ namespace TextPaster
         {
             if (_tmpIntercept && nCode >= 0)
             {
-
                 KeyStateInfo ctrlKey = KeyboardInfo.GetKeyState(Keys.ControlKey);
                 KeyStateInfo altKey = KeyboardInfo.GetKeyState(Keys.Alt);
                 KeyStateInfo shiftKey = KeyboardInfo.GetKeyState(Keys.ShiftKey);
@@ -66,7 +65,7 @@ namespace TextPaster
                 KeyStateInfo d0 = KeyboardInfo.GetKeyState(Keys.D0);
 
                 //int vkCode = Marshal.ReadInt32(lParam);
-                if (ctrlKey.IsPressed && altKey.IsPressed && d1.IsPressed)
+                if (ctrlKey.IsPressed && altKey.IsPressed)
                 {
                     Keys key;
                     if (d1.IsPressed) key = Keys.D1;
